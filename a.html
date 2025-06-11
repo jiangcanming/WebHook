@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>动态加载 Script 示例</title>
+</head>
+<body>
+  <h2>动态加载 SDK 脚本</h2>
+  <button id="load-script-btn">加载 Script</button>
+
+  <script>
+    document.getElementById('load-script-btn').addEventListener('click', function () {
+      const script = document.createElement('script');
+      script.src = 'https://prestatic.doclite.cn/sdkjs/word/sdk-all.js';
+      script.async = true;
+
+      script.onload = function () {
+        console.log('Script 加载完成');
+        // 你可以在这里调用 sdk-all.js 暴露的函数
+      };
+
+      script.onerror = function () {
+        console.error('Script 加载失败');
+      };
+
+      document.head.appendChild(script);
+    });
+  </script>
+</body>
+</html>
